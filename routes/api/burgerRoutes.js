@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const burgersController = require("../../controllers/burgersController");
+const burgersController  = require("../../controllers/burgers_controllers");
 
 // define API routes
 

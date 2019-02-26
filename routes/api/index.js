@@ -1,10 +1,8 @@
 const router = require("express").Router();
-const todoRoutes = require("./api");
-const htmlRouts = require("./html");
+const apiRoutes = require("./burgerRoutes");
 
 // set up routes and prefix them
-router.use("/", htmlRoutes);
-router.use("api", apiRoutes);
+router.use("/burgers", apiRoutes);
 
 
 module.exports = router;

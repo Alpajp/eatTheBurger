@@ -1,4 +1,4 @@
-import "../config/orm";
+require("../config/orm");
 
 const burger = {
     all: () => selectAll(),
@@ -7,4 +7,4 @@ const burger = {
     deleteOne: () => deleteBurger()
 }
 
-export default burger;
+module.exports = burger;

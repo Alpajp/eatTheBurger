@@ -1,20 +1,20 @@
 const router = require("express").Router();
-const burgersController  = require("../../controllers/burgers_controllers");
+const orm = require("../../config/orm");
 
 // define API routes
 
 // when user hits /api/burgers
 router
   .route("/")
-  .get(burgersController.findAll)
-  .post(burgersController.createburger);
+  .get(orm.selectAll)
+  .post(orm.insertOne);
 
 
 // when user hits /api/todos/:id
 router
   .route("/:id")
-  .get(burgersController.findById)
-  .put(burgersController.updateburger)
-  .delete(burgersController.deleteburger);
+  //.get(burgersController.findById)
+  .put(orm.updateOne)
+  .delete(orm.deleteburger);
 
 module.exports = router;

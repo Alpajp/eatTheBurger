@@ -11,6 +11,8 @@ module.exports = {
             .status(500)
             .json(err);
         }
+        console.log("this is dbData: ",dataBurger)
+
         res.json(dbBurgers);
       });
   },

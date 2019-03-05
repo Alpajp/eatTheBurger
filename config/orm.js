@@ -3,8 +3,8 @@ const db = require("./connection");
 module.exports = {
   // find all burgers in the database
   selectAll: function (req, res) {
-    db
-      .query("SELECT * FROM burgers", function (err, dbBurgers) {
+    
+     db.query("SELECT * FROM burgers", function (err, dbBurgers) {
         if (err) {
           console.log(err);
           return res
@@ -32,14 +32,17 @@ module.exports = {
   // insert / create new burger item (takes in req.body via POST)
   insertOne: function (req, res) {
     // req.body => {burger: "Make a burger"}
-    db
-      .query("INSERT INTO burgers SET ?", req.body, function (err, dbBurgers) {
+    
+      db.query("INSERT INTO burgers SET ?", req.body, function (err, dbBurgers) {
         if (err) {
           console.log(err);
           return res
             .status(400)
             .json(err);
         }
+
+        let burger = req.body.dbBurgers
+        console.log("This is the burger name going into the db" + burger);
         res.json(dbBurgers);
       });
   },
@@ -47,8 +50,9 @@ module.exports = {
   // this will use req.params.id to know where they're updating
   updateOne: function (req, res) {
     // req.params => {id : 1} req.params.id => 1
-    db
-      .query("UPDATE burgers SET devoured = true WHERE id =?", [req.params.id], function (err, dbBurgers) {
+    let queryString = "UPDATE burgers SET devoured = true WHERE id =?"; 
+    
+    db.query(queryString, [req.params.id], function (err, dbBurgers) {
         if (err) {
           console.log(err);
           return res
@@ -58,17 +62,19 @@ module.exports = {
         res.json(dbBurgers);
       })
   },
-  // delete a todo based on its id (req.params.id)
+  // delete a burger based on its id (req.params.id)
   deleteBurger: function (req, res) {
-
-    db.query("DELETE FROM burgers WHERE id = ?", [req.params.id], function (err, dbBurgers) {
+  let queryString = "DELETE FROM burgers WHERE id = ?";
+    db
+    .query(queryString, [req.params.id], function (err, result) {
 
         if (err) {
           console.log(err);
           return res.status(400).json(err);
         }
-        res.json(dbBurgers);
+        console.log("Deleting a burger from db at" + req.params.id)
+        res.json(result);
       });
 
   }
-}
+};

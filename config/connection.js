@@ -1,5 +1,6 @@
 
  const mysql = require("mysql");
+ console.log("inside connection.js - will it connect with db?");
 
  let db;
  

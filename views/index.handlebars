@@ -4,47 +4,33 @@
     <h2 class="text-center">Eat Da Burger</h2>
   </div>
 </div>  
-<div class="container">
-  <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-        {{#each burger}}
-          {{#unless this.devoured}}
-            <div class="mainlistitem">
-              <div class="items">
-               <span>
-                {{this.burger_name}}
-                </span>
-              </div> 
-              <div class="formdiv">
-                  <form action="/burger{{this.id}}?_method=PUT" method="POST" id="displayForm">
-                    <input type="hidden" name="devour" value="true">
-                    <button type="submit" id="buttontag">Devour</button>
-                  </form>
-              </div>
-            </div>
-            <br>
-          {{/unless}}
-        {{/each}}
-    </div>
-  </div>
+<div class="form-group">
+  <input type="text" required placeholer="Add a burger " class="form-control" name="burger_name">
+  <button type="submit" class="btn btn-default">Add burger</button>
 </div>
-    <div class="row">
-     <div class="col-md-offset-3 col-md-4">
-      <form class="create-update-form" action="/burger" method="POST">
-        <div class="form-group">
-          <label for="bu"></label>
-          <textarea rows="3" cols="30" id="burgerBox" name="name" placeholder="Enter a burger"></textarea>
-        </div>
-        <div class="centerAlign">
-          <button type="submit">Add Burger</button>
-        </div>
-      </form>
-    </div>
+<div class="content-burger">
+  {{#each burgers}}
+  <div class="content-burger_list" id={{id}}>
+    <img src#"./images/lefteris-kallergis-581884-unsplash.jpg" alt="">  
+   <p>{{burger_name}}</p>
+   <button class ="btn btn-default favorites" " data-id="{{id}}" data-state="{{is_favorite}}">
+     {{#if is_favorite}} unfavorite {{else}} add to favorite </if>
+        </button>
   </div>
+  </each>
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
-<script src="assets/js/todos.js"></script>
+<script src="assets/js/burgers.js"></script>
 	</body>
 </html>
+   
+            
+            
+            
+            
+            
+            
+            

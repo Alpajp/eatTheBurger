@@ -15,6 +15,6 @@ router
   .route("/:id")
   //.get(burgersController.findById)
   .put(orm.updateOne)
-  .delete(orm.deleteburger);
+  delete(orm.deleteburger);
 
 module.exports = router;

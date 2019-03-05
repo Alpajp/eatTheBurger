@@ -5,6 +5,7 @@ const routes = require("./routes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const db = require("./config/connection");
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -15,5 +16,10 @@ app.set("view engine", "handlebars");
 
 // turn on all routes
 app.use(routes);
+
+app.use('/', routes);
+
+app.engine("handlebars", exphbs({deFaultLayout: "main"}));
+app.set("view engine", "handlebars");
 
 app.listen(PORT, () => console.log(`Now on localhost:${PORT}`));

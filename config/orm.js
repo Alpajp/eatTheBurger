@@ -33,7 +33,7 @@ module.exports = {
   insertOne: function (req, res) {
     // req.body => {burger: "Make a burger"}
     
-      db.query("INSERT INTO burgers SET ?", req.body, function (err, dbBurgers) {
+      const query = db.query("INSERT INTO burgers SET ?", req.body, function (err, dbBurgers) {
         if (err) {
           console.log(err);
           return res
@@ -45,6 +45,7 @@ module.exports = {
         console.log("This is the burger name going into the db" + burger);
         res.json(dbBurgers);
       });
+      console.log(query.sql);
   },
   // UPDATE/PUT a burger to mark it from uneaten to devoured (false => true),
   // this will use req.params.id to know where they're updating
@@ -65,9 +66,7 @@ module.exports = {
   // delete a burger based on its id (req.params.id)
   deleteBurger: function (req, res) {
   let queryString = "DELETE FROM burgers WHERE id = ?";
-    db
-    .query(queryString, [req.params.id], function (err, result) {
-
+   const query = db.query(queryString, [req.params.id], function (err, result) {
         if (err) {
           console.log(err);
           return res.status(400).json(err);
@@ -75,6 +74,8 @@ module.exports = {
         console.log("Deleting a burger from db at" + req.params.id)
         res.json(result);
       });
+
+      console.log(query.sql);
 
   }
 };

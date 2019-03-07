@@ -19,7 +19,4 @@ app.use(routes);
 
 app.use('/', routes);
 
-app.engine("handlebars", exphbs({deFaultLayout: "main"}));
-app.set("view engine", "handlebars");
-
 app.listen(PORT, () => console.log(`Now on localhost:${PORT}`));

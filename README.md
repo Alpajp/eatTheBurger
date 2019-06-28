@@ -24,3 +24,6 @@ All burger info will be saved to the mySQL database.
 * Node.js
 * Node Express
 * Handlebars
+
+
+![Burger](https://user-images.githubusercontent.com/45401358/60361116-61285000-99ab-11e9-80b1-37246f02c1fc.PNG)

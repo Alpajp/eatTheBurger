@@ -2,7 +2,7 @@
 
 Burger logger with MySQL, Node, Express, and Handlebars.
 
-This is a link to my app : https://alpajp.github.io/eatTheBurger/
+This is a link to my app : https://alpa-eat-the-burger.herokuapp.com/
 
 
 Overview
